@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:optimize/models/PlusOne.dart';
 import 'package:optimize/screens/plus_one_detail.dart';
-import 'package:optimize/screens/pn_detail_screen.dart';
 import 'package:optimize/screens/video_view_screen.dart';
 
 import '../constants/active_constants.dart';
@@ -37,15 +36,13 @@ class PlusOneWidget extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  if (data.video != null) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => VideoViewScreen(
-                            url: data.video, isUbube: data.isUtube),
-                      ),
-                    );
-                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VideoViewScreen(
+                          url: data.video, isUbube: data.isUtube),
+                    ),
+                  );
                 },
                 child: Container(
                   width: deviceWidth < 400.0 ? 123.0 : 133.0,
@@ -55,7 +52,7 @@ class PlusOneWidget extends StatelessWidget {
                     image: DecorationImage(
                       image: data.video != null
                           ? NetworkImage(data.thumbnail)
-                          : NetworkImage(
+                          : const NetworkImage(
                               'https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg'),
                       fit: BoxFit.fill,
                     ),

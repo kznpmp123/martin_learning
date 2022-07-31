@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:optimize/screens/blog_page_screen.dart';
@@ -15,7 +14,6 @@ import 'screens/featured.dart';
 import 'screens/plus_one.dart';
 import 'screens/pn.dart';
 import 'screens/one_z_one.dart';
-import 'screens/my_lists.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -94,7 +92,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 actions: [
-                  InkWell(child: Text("Update"), onTap: (){
+                  InkWell(child: const Text("Update"), onTap: (){
                     print("update on tap");
                     // open playstore link in web
                     _launchURL(message.data['app_url'] ?? "app_url");
@@ -128,18 +126,18 @@ class _HomeState extends State<Home> {
         context: context,
         builder: (_) {
           return AlertDialog(
-            title: Text("title"),
+            title: const Text("title"),
             content: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Text("body"),
                   Text("another message")
                 ],
               ),
             ),
             actions: [
-              InkWell(child: Text("Update"), onTap: (){
+              InkWell(child: const Text("Update"), onTap: (){
                 print("update on tap");
                 // open playstore link in web
                 Navigator.pop(context);
@@ -190,7 +188,7 @@ class _HomeState extends State<Home> {
             icon: activeIcons.player,
             label: 'Course',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.article),
             label: 'Blog',
           ),
@@ -216,6 +214,6 @@ class _HomeState extends State<Home> {
   }
 
   Widget _fab(){
-    return FloatingActionButton(onPressed: _showDialogOwn, child: Icon(Icons.refresh),);
+    return FloatingActionButton(onPressed: _showDialogOwn, child: const Icon(Icons.refresh),);
   }
 }

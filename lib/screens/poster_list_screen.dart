@@ -17,7 +17,7 @@ class PosterListScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: activeColors.primary,
-          title: Text("${type}: Poster"),
+          title: Text("$type: Poster"),
           centerTitle: false,
           titleSpacing: 0.0,
           titleTextStyle: const TextStyle(
@@ -42,8 +42,8 @@ class PosterListScreen extends StatelessWidget {
               child: Card(
                 child: ListTile(
                     title: Text(files[index].name),
-                    leading: Icon(Icons.photo),
-                    trailing: Icon(Icons.arrow_forward)),
+                    leading: const Icon(Icons.photo),
+                    trailing: const Icon(Icons.arrow_forward)),
               ),
             );
           },

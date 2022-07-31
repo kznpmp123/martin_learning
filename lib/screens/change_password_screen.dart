@@ -18,7 +18,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   bool _isPreloading = false;
   bool _passwordVisible = false;
   bool _actionLoading = false;
-  Map<String, String> _authData = {
+  final Map<String, String> _authData = {
     'current_password': '',
     'new_password': '',
     'new_password_confirmation': '',
@@ -38,6 +38,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
@@ -49,7 +50,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   bool isValidEmail(String email) {
     String p =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regExp = new RegExp(p);
+    RegExp regExp = RegExp(p);
     return regExp.hasMatch(email);
   }
 
@@ -95,7 +96,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: activeColors.primary,
-        title: Text("   Change Password"),
+        title: const Text("   Change Password"),
         centerTitle: false,
         titleSpacing: 0.0,
         titleTextStyle: const TextStyle(
@@ -107,19 +108,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           ? FullScreenPreloader()
           : Consumer<Auth>(builder: (context, authState, child) {
               return Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                   child: Form(
                       key: _formKey,
                       child: Container(
                         child: Column(
                           children: <Widget>[
                             Container(
-                                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                                 child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Text("Current Password"),
+                                      const Text("Current Password"),
                                       TextFormField(
                                         keyboardType: TextInputType.text,
                                         validator: (value) {
@@ -138,14 +139,14 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                           fillColor: Colors.white,
                                           hintText:
                                               'Type Your Current Password',
-                                          hintStyle: TextStyle(
+                                          hintStyle: const TextStyle(
                                             color: Colors.black,
                                           ),
-                                          contentPadding: EdgeInsets.fromLTRB(
+                                          contentPadding: const EdgeInsets.fromLTRB(
                                               20.0, 15.0, 20.0, 15.0),
 
                                           border: OutlineInputBorder(
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                   color: Colors.orange,
                                                   width: 32.0),
                                               borderRadius:
@@ -173,12 +174,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                       ),
                                     ])),
                             Container(
-                                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                                 child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Text("New Password"),
+                                      const Text("New Password"),
                                       TextFormField(
                                         keyboardType: TextInputType.text,
                                         validator: (value) {
@@ -197,14 +198,14 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                           filled: true,
                                           fillColor: Colors.white,
                                           hintText: 'Type Your Password',
-                                          hintStyle: TextStyle(
+                                          hintStyle: const TextStyle(
                                             color: Colors.black,
                                           ),
-                                          contentPadding: EdgeInsets.fromLTRB(
+                                          contentPadding: const EdgeInsets.fromLTRB(
                                               20.0, 15.0, 20.0, 15.0),
 
                                           border: OutlineInputBorder(
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                   color: Colors.orange,
                                                   width: 32.0),
                                               borderRadius:
@@ -232,12 +233,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                       ),
                                     ])),
                             Container(
-                                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                                 child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Text("Confirm New Password"),
+                                      const Text("Confirm New Password"),
                                       TextFormField(
                                         keyboardType: TextInputType.text,
                                         validator: (value) {
@@ -256,14 +257,14 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                           fillColor: Colors.white,
                                           hintText:
                                               'Type Your Confirm Password',
-                                          hintStyle: TextStyle(
+                                          hintStyle: const TextStyle(
                                             color: Colors.black,
                                           ),
-                                          contentPadding: EdgeInsets.fromLTRB(
+                                          contentPadding: const EdgeInsets.fromLTRB(
                                               20.0, 15.0, 20.0, 15.0),
 
                                           border: OutlineInputBorder(
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                   color: Colors.orange,
                                                   width: 32.0),
                                               borderRadius:
@@ -290,21 +291,21 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         ),
                                       ),
                                     ])),
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             FlatButton(
                               child: Text(
                                 _actionLoading ? 'Loading...' : 'Update',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
                               color: activeColors.primary,
                               onPressed: _submit,
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 60, vertical: 15),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                           ],

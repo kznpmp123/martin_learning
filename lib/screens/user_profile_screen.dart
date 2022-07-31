@@ -29,6 +29,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
@@ -37,11 +38,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     super.didChangeDependencies();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: activeColors.primary,
-          title: Text("   Manage Profile"),
+          title: const Text("   Manage Profile"),
           centerTitle: false,
           titleSpacing: 0.0,
           titleTextStyle: const TextStyle(
@@ -60,7 +62,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         decoration: BoxDecoration(
                           color: activeColors.primary,
                         ),
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         width: double.infinity,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -77,12 +79,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               children: <Widget>[
                                 Text(
                                   authStatte.currentUser.username,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white),
                                 ),
-                                SizedBox(height: 15),
+                                const SizedBox(height: 15),
                                 Text(
                                   authStatte.currentUser.email,
                                   style: TextStyle(
@@ -97,8 +99,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     child: ListView(children: <Widget>[
                       Container(
                         alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Text("Subscribed Course"),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: const Text("Subscribed Course"),
                       ),
                       Consumer<Auth>(builder: (context, authStatte, child) {
                         return Column(
@@ -113,11 +115,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ChangePasswordScreen(),
+                              builder: (context) => const ChangePasswordScreen(),
                             ),
                           );
                         },
-                        child: Card(
+                        child: const Card(
                             child: ListTile(
                           leading: Icon(Icons.lock),
                           title: Text("Change Password"),
@@ -128,11 +130,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => UpdateProfileScreen(),
+                              builder: (context) => const UpdateProfileScreen(),
                             ),
                           );
                         },
-                        child: Card(
+                        child: const Card(
                             child: ListTile(
                           leading: Icon(Icons.account_box),
                           title: Text("Update Profile"),

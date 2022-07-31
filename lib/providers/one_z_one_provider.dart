@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:optimize/models/AudioFile.dart';
 import 'package:optimize/models/OneZOne.dart';
 import 'package:optimize/models/PdfFile.dart';
-import 'package:optimize/models/PlusOne.dart';
 import 'package:optimize/models/Poster.dart';
 import 'package:optimize/models/VideoFile.dart';
 import 'package:optimize/network/one_z_one_service.dart';
-import 'package:optimize/network/plus_one_service.dart';
-import 'package:optimize/network/pn_service.dart';
 
 class OneZOneProvider with ChangeNotifier {
   List<OneZOne> items = [];
@@ -21,28 +18,16 @@ class OneZOneProvider with ChangeNotifier {
       OneZOne data = OneZOne(
         id: response["data"][i]["id"],
         title: response["data"][i]["title"],
-        video: response["data"][i]["video"] != null
-            ? response["data"][i]["video"]
-            : "",
+        video: response["data"][i]["video"] ?? "",
         isUtube: response["data"][i]["isYoutube"],
-        subtitle: response["data"][i]["subtitle"] != null
-            ? response["data"][i]["subtitle"]
-            : "",
-        description: response["data"][i]["description"] != null
-            ? response["data"][i]["description"]
-            : "",
-        thumbnail: response["data"][i]["thumbnail"] != null
-            ? response["data"][i]["thumbnail"]
-            : "",
-        poster_image: response["data"][i]["poster_image"] != null
-            ? response["data"][i]["poster_image"]
-            : "",
+        subtitle: response["data"][i]["subtitle"] ?? "",
+        description: response["data"][i]["description"] ?? "",
+        thumbnail: response["data"][i]["thumbnail"] ?? "",
+        poster_image: response["data"][i]["poster_image"] ?? "",
         isBooked: response["data"][i]["isBooked"],
         isLiked: response["data"][i]["isLiked"],
         isTipped: response["data"][i]["isTiped"],
-        isSub: response["data"][i]["isSubscribed"] != null
-            ? response["data"][i]["isSubscribed"]
-            : "",
+        isSub: response["data"][i]["isSubscribed"] ?? "",
         pdfFiles: [],
         audioFiles: [],
         videoFiles: [],
@@ -52,7 +37,7 @@ class OneZOneProvider with ChangeNotifier {
     }
 
     if (sorted) {
-      items = new List.from(items.reversed);
+      items = List.from(items.reversed);
     }
 
     notifyListeners();
@@ -91,7 +76,7 @@ class OneZOneProvider with ChangeNotifier {
       audioFiles.add(AudioFile(
           id: response["data"]["audios"][y]["id"],
           name: response["data"]["audios"][y]["title"] ,
-          thumbnail: response["data"]["audios"][y]["thumbnail"] != null ?  response["data"]["audios"][y]["thumbnail"] : "",
+          thumbnail: response["data"]["audios"][y]["thumbnail"] ?? "",
           url: response["data"]["audios"][y]["audio"]));
     }
     print(audioFiles);
@@ -105,33 +90,21 @@ class OneZOneProvider with ChangeNotifier {
           id: response["data"]["videos"][y]["id"],
           isYouTube: response["data"]["videos"][y]["is_youtube"],
           name: response["data"]["videos"][y]["title"],
-          subTitle: response["data"]["videos"][y]["subtitle"] != null
-              ? response["data"]["videos"][y]["subtitle"]
-              : "",
-          thumbnail: response["data"]["videos"][y]["thumbnail"] != null
-              ? response["data"]["videos"][y]["thumbnail"]
-              : "",
-          url: response["data"]["videos"][y]["video"] != null
-              ? response["data"]["videos"][y]["video"]
-              : ""));
+          subTitle: response["data"]["videos"][y]["subtitle"] ?? "",
+          thumbnail: response["data"]["videos"][y]["thumbnail"] ?? "",
+          url: response["data"]["videos"][y]["video"] ?? ""));
     }
     print(videoFiles);
 
     item = OneZOne(
       id: response["data"]["id"],
-      title: response["data"]["title"] != null ? response["data"]["title"] : "title",
-      subtitle: response["data"]["subtitle"] != null ? response["data"]["subtitle"] : "subtitle",
-      video: response["data"]["video"] != null ? response["data"]["video"] : "",
+      title: response["data"]["title"] ?? "title",
+      subtitle: response["data"]["subtitle"] ?? "subtitle",
+      video: response["data"]["video"] ?? "",
       isUtube: response["data"]["isYoutube"],
-      description: response["data"]["description"] != null
-          ? response["data"]["description"]
-          : "",
-      thumbnail: response["data"]["thumbnail"] != null
-          ? response["data"]["thumbnail"]
-          : "",
-      poster_image: response["data"]["poster_image"] != null
-          ? response["data"]["poster_image"]
-          : "",
+      description: response["data"]["description"] ?? "",
+      thumbnail: response["data"]["thumbnail"] ?? "",
+      poster_image: response["data"]["poster_image"] ?? "",
       isBooked: response["data"]["isBooked"],
       isLiked: response["data"]["isLiked"],
       isTipped: response["data"]["isTiped"],
@@ -143,7 +116,7 @@ class OneZOneProvider with ChangeNotifier {
     );
     print(item);
     // for detail screen when it reached from my list
-    if (items.length == 0) {
+    if (items.isEmpty) {
       items.add(item);
     }
     notifyListeners();

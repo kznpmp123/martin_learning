@@ -6,8 +6,8 @@ class FullScreenPreloader extends StatelessWidget {
     return Center(
       child: Container(
         //padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.5),
-        padding: EdgeInsets.all(8.0),
-        child: CircularProgressIndicator(),
+        padding: const EdgeInsets.all(8.0),
+        child: const CircularProgressIndicator(),
       ),
     );
   }

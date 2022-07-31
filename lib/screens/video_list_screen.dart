@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:optimize/constants/active_constants.dart';
-import 'package:optimize/models/PdfFile.dart';
 import 'package:optimize/models/VideoFile.dart';
-import 'package:optimize/screens/pdf_viewer.dart';
 import 'package:optimize/screens/video_view_screen.dart';
 
 class VideoListScreen extends StatelessWidget {
@@ -18,7 +16,7 @@ class VideoListScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: activeColors.primary,
-          title: Text("${type}: Videos"),
+          title: Text("$type: Videos"),
           centerTitle: false,
           titleSpacing: 0.0,
           titleTextStyle: const TextStyle(
@@ -45,7 +43,7 @@ class VideoListScreen extends StatelessWidget {
                 child: SizedBox(
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    margin: EdgeInsets.only(bottom: 10),
+                    margin: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,

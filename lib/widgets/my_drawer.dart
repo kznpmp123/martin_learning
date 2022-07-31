@@ -31,7 +31,7 @@ class MyDrawer extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => Home(),
+                builder: (context) => const Home(),
               ),
             );
           }),
@@ -42,7 +42,7 @@ class MyDrawer extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => NotiScreen(),
+                builder: (context) => const NotiScreen(),
               ),
             );
           }),
@@ -66,7 +66,7 @@ class MyDrawer extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => MyLists(),
+                builder: (context) => const MyLists(),
               ),
             );
           }),
@@ -86,7 +86,7 @@ class MyDrawer extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 color: activeColors.white,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -111,7 +111,7 @@ class MyDrawer extends StatelessWidget {
                   top: 15.0,
                 ),
                 child: Row(
-                  children: [],
+                  children: const [],
                 ),
               ),
               SizedBox(

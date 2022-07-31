@@ -1,12 +1,11 @@
-import 'dart:io';
 
-import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:optimize/providers/blog_provider.dart';
+import 'package:optimize/providers/comment_provider.dart';
 import 'package:optimize/providers/feature_provider.dart';
 import 'package:optimize/providers/greeting_provider.dart';
 import 'package:optimize/providers/my_list_provider.dart';
@@ -22,13 +21,9 @@ import 'package:provider/provider.dart';
 
 import 'constants/active_constants.dart';
 // screens
-import 'onboarding.dart';
 import 'home.dart';
 import 'providers/auth_provider.dart';
 import 'providers/plus_one_provider.dart';
-import 'screens/featured_full.dart';
-import 'screens/noti.dart';
-import 'screens/offline_content.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel_martin', // id
@@ -127,6 +122,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider.value(
             value: GreetingProvider(),
           ),
+          ChangeNotifierProvider.value(
+            value: CommentProvider(),
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -154,18 +152,18 @@ class MyApp extends StatelessWidget {
           home: Consumer<Auth>(
             builder: (context, auth, child) {
               if (auth.isAuth) {
-                return Home();
+                return const Home();
               } else {
                 return FutureBuilder(
                   future: auth.tryAutoLogin(),
                   builder: (ctx, snapshot) =>
                       snapshot.connectionState == ConnectionState.waiting
-                          ? Scaffold(
+                          ? const Scaffold(
                               body: Center(
                                 child: Text('Loading'),
                               ),
                             )
-                          : SignUpScreen(),
+                          : const SignUpScreen(),
                 );
               }
             },

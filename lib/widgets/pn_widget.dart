@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:optimize/models/Pn.dart';
-import 'package:optimize/screens/music_player_screen.dart';
-import 'package:optimize/screens/pdf_viewer.dart';
 import 'package:optimize/screens/pn_detail_screen.dart';
-import 'package:optimize/screens/video_view_screen.dart';
 
 import '../constants/active_constants.dart';
 

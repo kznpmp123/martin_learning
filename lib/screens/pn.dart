@@ -30,6 +30,7 @@ class _PNState extends State<PN> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();

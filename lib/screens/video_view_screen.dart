@@ -9,7 +9,7 @@ import '../constants/active_constants.dart';
 class VideoViewScreen extends StatefulWidget {
   final String url;
   final bool isUbube;
-  VideoViewScreen({required this.url, required this.isUbube});
+  const VideoViewScreen({required this.url, required this.isUbube});
 
   @override
   _VideoViewScreenState createState() => _VideoViewScreenState();
@@ -27,7 +27,7 @@ class _VideoViewScreenState extends State<VideoViewScreen> {
     if (widget.isUbube) {
       _controller = YoutubePlayerController(
         initialVideoId: widget.url,
-        flags: YoutubePlayerFlags(
+        flags: const YoutubePlayerFlags(
           autoPlay: true,
         ),
       );
@@ -49,7 +49,7 @@ class _VideoViewScreenState extends State<VideoViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(appName),
+        title: const Text(appName),
       ),
       backgroundColor: Colors.black,
       body: Container(
