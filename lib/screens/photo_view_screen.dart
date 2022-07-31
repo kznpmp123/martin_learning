@@ -11,7 +11,7 @@ class PhotoViewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(appName),
+          title: const Text(appName),
         ),
         body : Container(child: PhotoView(imageProvider: NetworkImage(image)))
     );

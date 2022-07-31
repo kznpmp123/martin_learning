@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:optimize/constants/active_constants.dart';
 import 'package:optimize/providers/blog_provider.dart';
-import 'package:optimize/providers/one_z_one_provider.dart';
-import 'package:optimize/providers/sort_provider.dart';
-import 'package:optimize/widgets/full_screen_preloader.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -34,6 +31,7 @@ class _BlogPageScreenState extends State<BlogPageScreen> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
@@ -50,7 +48,7 @@ class _BlogPageScreenState extends State<BlogPageScreen> {
         Expanded(
             child: Consumer<BlogProvider>(builder: (context, blogState, child) {
 
-          if(blogState.blogs.length == 0 ) return Container(child: Center(child: CircularProgressIndicator(),),);
+          if(blogState.blogs.isEmpty ) return Container(child: const Center(child: CircularProgressIndicator(),),);
           return ListView.builder(
             itemCount: blogState.blogs.length,
             itemBuilder: (context, index) {
@@ -58,12 +56,12 @@ class _BlogPageScreenState extends State<BlogPageScreen> {
                 return Column(
                   children: [
                     _isPreloading
-                        ? CircularProgressIndicator()
+                        ? const CircularProgressIndicator()
                         : Container(
                             alignment: Alignment.center,
-                            padding: EdgeInsets.symmetric(vertical: 20),
+                            padding: const EdgeInsets.symmetric(vertical: 20),
                             child: FlatButton(
-                              child: Text(
+                              child: const Text(
                                 "Load More",
                                 style: TextStyle(
                                     color: Colors.white,
@@ -81,9 +79,9 @@ class _BlogPageScreenState extends State<BlogPageScreen> {
                           ),
                   ],
                 );
-              } else
+              } else {
                 return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
                       const SizedBox(height: 20.0),
@@ -119,6 +117,7 @@ class _BlogPageScreenState extends State<BlogPageScreen> {
                     ],
                   ),
                 );
+              }
             },
           );
         })),

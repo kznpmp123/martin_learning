@@ -11,15 +11,9 @@ class NotificationProvider with ChangeNotifier {
     for (int i = 0; i < response["data"].length; i++) {
       items.add(Noti(
         id: response["data"][i]["id"],
-        title: response["data"][i]["title"] != null
-            ? response["data"][i]["title"]
-            : "",
-        body: response["data"][i]["body"] != null
-            ? response["data"][i]["body"]
-            : "",
-        image: response["data"][i]["image"] != null
-            ? response["data"][i]["image"]
-            : "",
+        title: response["data"][i]["title"] ?? "",
+        body: response["data"][i]["body"] ?? "",
+        image: response["data"][i]["image"] ?? "",
       ));
     }
     notifyListeners();

@@ -14,7 +14,7 @@ class PdfListScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: activeColors.primary,
-          title: Text("${type}: Pdf Files"),
+          title: Text("$type: Pdf Files"),
           centerTitle: false,
           titleSpacing: 0.0,
           titleTextStyle: const TextStyle(
@@ -38,8 +38,8 @@ class PdfListScreen extends StatelessWidget {
               child: Card(
                 child: ListTile(
                     title: Text(files[index].name),
-                    leading: Icon(Icons.book),
-                    trailing: Icon(Icons.arrow_forward)),
+                    leading: const Icon(Icons.book),
+                    trailing: const Icon(Icons.arrow_forward)),
               ),
             );
           },

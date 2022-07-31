@@ -22,7 +22,7 @@ class PnService {
     final storedData = json.decode(token!);
 
     Response response =
-        await ApiService.getApiHandler(storedData['token']).get('pns/${id}');
+        await ApiService.getApiHandler(storedData['token']).get('pns/$id');
     return response.data;
   }
 
@@ -42,7 +42,7 @@ class PnService {
     final storedData = json.decode(token!);
 
     Response response = await ApiService.getApiHandler(storedData['token'])
-        .post('mark-pns/${id}', data: {type: value});
+        .post('mark-pns/$id', data: {type: value});
 
     return response.data;
   }

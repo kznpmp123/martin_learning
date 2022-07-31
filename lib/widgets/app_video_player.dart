@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 import 'package:chewie/src/chewie_player.dart';
-import 'dart:io';
 
 class AppVideoPlayer extends StatefulWidget {
   String path;
@@ -53,8 +52,8 @@ class _AppVideoPlayerState extends State<AppVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      padding: EdgeInsets.all(10),
+    return Container(
+      padding: const EdgeInsets.all(10),
       alignment: Alignment.topCenter,
       child: Chewie(
         controller: _chewieController,

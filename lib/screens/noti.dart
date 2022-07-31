@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:optimize/models/Noti.dart';
 import 'package:optimize/providers/notification_provider.dart';
@@ -18,7 +17,7 @@ class NotiScreen extends StatefulWidget {
 }
 
 class _NotiScreenState extends State<NotiScreen> {
-  bool _noti = false;
+  final bool _noti = false;
   bool _isInit = false;
   bool _isPreloading = false;
 
@@ -34,6 +33,7 @@ class _NotiScreenState extends State<NotiScreen> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
@@ -96,16 +96,16 @@ class NotiTile extends StatelessWidget {
               ),
             ),
             subtitle: Padding(
-              padding: EdgeInsets.only(top: 7.0),
+              padding: const EdgeInsets.only(top: 7.0),
               child: Text(data.body),
             ),
-            trailing: data.image.length > 0
+            trailing: data.image.isNotEmpty
                 ? Image.network(
                     data.image,
                     width: 50,
                     height: 50,
                   )
-                : SizedBox()),
+                : const SizedBox()),
         const SizedBox(height: 5.0),
         Divider(
           height: 2.0,

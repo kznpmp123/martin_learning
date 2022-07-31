@@ -22,7 +22,7 @@ class OneZOneService {
     final storedData = json.decode(token!);
 
     Response response = await ApiService.getApiHandler(storedData['token'])
-        .get('one-zero-ones/${id}');
+        .get('one-zero-ones/$id');
     return response.data;
   }
 
@@ -42,7 +42,7 @@ class OneZOneService {
     final storedData = json.decode(token!);
 
     Response response = await ApiService.getApiHandler(storedData['token'])
-        .post('mark-one-zero-ones/${id}', data: {type: value});
+        .post('mark-one-zero-ones/$id', data: {type: value});
     return response.data;
   }
 

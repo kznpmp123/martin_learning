@@ -6,13 +6,12 @@ import 'package:optimize/screens/music_player_screen.dart';
 import 'package:optimize/screens/video_view_screen.dart';
 import 'package:optimize/widgets/full_screen_preloader.dart';
 
-import 'package:optimize/widgets/home_app_bar.dart';
 import 'package:provider/provider.dart';
 import '../constants/active_constants.dart';
 
 class PlusOneDetail extends StatefulWidget {
   final PlusOne data;
-  PlusOneDetail({
+  const PlusOneDetail({
     Key? key,
     required this.data,
   }) : super(key: key);
@@ -38,6 +37,7 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
@@ -70,7 +70,7 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            if (appState.item.video.length > 0) {
+                            if (appState.item.video.isNotEmpty) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -113,12 +113,12 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                               ),
                               Text(
                                 appState.item.subtitle,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 13,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Row(
@@ -188,7 +188,7 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -205,7 +205,7 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                             child: ElevatedButton(
                               style: ButtonStyle(
                                 padding: MaterialStateProperty.all<EdgeInsets>(
-                                    EdgeInsets.symmetric(vertical: 5)),
+                                    const EdgeInsets.symmetric(vertical: 5)),
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
                                         Colors.white),
@@ -214,7 +214,7 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                                         Colors.blue),
                               ),
                               onPressed: () {
-                                if (appState.item.audio.length > 0) {
+                                if (appState.item.audio.isNotEmpty) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -229,8 +229,8 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                                 }
                               },
                               child: Column(
-                                children: [
-                                  const Icon(Icons.music_note),
+                                children: const [
+                                  Icon(Icons.music_note),
                                   Text(
                                     "Listen",
                                     style: TextStyle(fontSize: 10),

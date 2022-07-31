@@ -4,7 +4,6 @@ import 'package:optimize/models/Pn.dart';
 import 'package:optimize/providers/pn_provider.dart';
 import 'package:optimize/screens/audio_list_screen.dart';
 import 'package:optimize/screens/pdf_list_screen.dart';
-import 'package:optimize/screens/pdf_viewer.dart';
 import 'package:optimize/screens/video_list_screen.dart';
 import 'package:optimize/screens/video_view_screen.dart';
 import 'package:optimize/widgets/full_screen_preloader.dart';
@@ -12,7 +11,6 @@ import 'package:optimize/widgets/message_dialog.dart';
 import 'package:optimize/widgets/premium_message.dart';
 import 'package:provider/provider.dart';
 import '../constants/active_constants.dart';
-import 'music_player_screen.dart';
 
 class PnDetail extends StatefulWidget {
   final Pn data;
@@ -42,6 +40,7 @@ class _PnDetailState extends State<PnDetail> {
     }
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
@@ -120,12 +119,12 @@ class _PnDetailState extends State<PnDetail> {
                                 ),
                                 Text(
                                   appState.item.subtitle,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 13,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Row(
@@ -195,7 +194,7 @@ class _PnDetailState extends State<PnDetail> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
@@ -218,7 +217,7 @@ class _PnDetailState extends State<PnDetail> {
                                       style: ButtonStyle(
                                         padding: MaterialStateProperty.all<
                                                 EdgeInsets>(
-                                            EdgeInsets.symmetric(vertical: 5)),
+                                            const EdgeInsets.symmetric(vertical: 5)),
                                         backgroundColor:
                                             MaterialStateProperty.all<Color>(
                                                 Colors.white),
@@ -251,8 +250,8 @@ class _PnDetailState extends State<PnDetail> {
                                         }
                                       },
                                       child: Column(
-                                        children: [
-                                          const Icon(Icons.book),
+                                        children: const [
+                                          Icon(Icons.book),
                                           Text(
                                             "Read",
                                             style: TextStyle(fontSize: 10),
@@ -268,7 +267,7 @@ class _PnDetailState extends State<PnDetail> {
                                       style: ButtonStyle(
                                         padding: MaterialStateProperty.all<
                                                 EdgeInsets>(
-                                            EdgeInsets.symmetric(vertical: 5)),
+                                            const EdgeInsets.symmetric(vertical: 5)),
                                         backgroundColor:
                                             MaterialStateProperty.all<Color>(
                                                 Colors.white),
@@ -305,8 +304,8 @@ class _PnDetailState extends State<PnDetail> {
                                         }
                                       },
                                       child: Column(
-                                        children: [
-                                          const Icon(Icons.music_note),
+                                        children: const [
+                                          Icon(Icons.music_note),
                                           Text(
                                             "Listen",
                                             style: TextStyle(fontSize: 10),
@@ -322,7 +321,7 @@ class _PnDetailState extends State<PnDetail> {
                                       style: ButtonStyle(
                                         padding: MaterialStateProperty.all<
                                                 EdgeInsets>(
-                                            EdgeInsets.symmetric(vertical: 5)),
+                                            const EdgeInsets.symmetric(vertical: 5)),
                                         backgroundColor:
                                             MaterialStateProperty.all<Color>(
                                                 Colors.white),
@@ -355,8 +354,8 @@ class _PnDetailState extends State<PnDetail> {
                                         }
                                       },
                                       child: Column(
-                                        children: [
-                                          const Icon(Icons.tv),
+                                        children: const [
+                                          Icon(Icons.tv),
                                           Text(
                                             "Video",
                                             style: TextStyle(fontSize: 10),
