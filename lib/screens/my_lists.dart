@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:optimize/models/ThreeMintues.dart';
 import 'package:optimize/providers/my_list_provider.dart';
 import 'package:optimize/widgets/full_screen_preloader.dart';
 
@@ -52,6 +51,7 @@ class _MyListsState extends State<MyLists> with SingleTickerProviderStateMixin {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
@@ -129,7 +129,7 @@ class _MyListsState extends State<MyLists> with SingleTickerProviderStateMixin {
                         : SingleChildScrollView(
                             child: Column(
                               children: [
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Column(
                                   children: [
                                     for (var item in appState.favPlusOnes)
@@ -142,14 +142,14 @@ class _MyListsState extends State<MyLists> with SingleTickerProviderStateMixin {
                                       PNWidget(data: item),
                                   ],
                                 ),
-                                appState.favOneZOnes.isEmpty ? Center(child: Text("No Fav Item"),) :
+                                appState.favOneZOnes.isEmpty ? const Center(child: Text("No Fav Item"),) :
                                 Column(
                                   children: [
                                     for (var item in appState.favOneZOnes)
                                       OneZOneWidget(data: item),
                                   ],
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Column(
                                   children: [
                                     for (var item in appState.favThreeMinutes)
@@ -167,9 +167,9 @@ class _MyListsState extends State<MyLists> with SingleTickerProviderStateMixin {
                         : SingleChildScrollView(
                             child: Column(
                               children: [
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
 
-                                appState.tipPlusOnes.isEmpty ? Center(child: Text("No Completed Item"),) :
+                                appState.tipPlusOnes.isEmpty ? const Center(child: Text("No Completed Item"),) :
                                 Column(
                                   children: [
                                     for (var item in appState.tipPlusOnes)
@@ -188,7 +188,7 @@ class _MyListsState extends State<MyLists> with SingleTickerProviderStateMixin {
                                       OneZOneWidget(data: item),
                                   ],
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Column(
                                   children: [
                                     for (var item in appState.tipThreeMinutes)
@@ -206,8 +206,8 @@ class _MyListsState extends State<MyLists> with SingleTickerProviderStateMixin {
                         : SingleChildScrollView(
                             child: Column(
                               children: [
-                                SizedBox(height: 20),
-                                appState.bookPlusOnes.isEmpty ? Center(child: Text("No Saved Item"),) :
+                                const SizedBox(height: 20),
+                                appState.bookPlusOnes.isEmpty ? const Center(child: Text("No Saved Item"),) :
                                 Column(
                                   children: [
                                     for (var item in appState.bookPlusOnes)
@@ -226,7 +226,7 @@ class _MyListsState extends State<MyLists> with SingleTickerProviderStateMixin {
                                       OneZOneWidget(data: item),
                                   ],
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Column(
                                   children: [
                                     for (var item in appState.bookThreeMinutes)

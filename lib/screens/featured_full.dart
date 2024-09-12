@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/home_app_bar.dart';
 import '../widgets/my_drawer.dart';
-import '../widgets/plus_one_widget.dart';
-import '../widgets/pn_widget.dart';
-import '../widgets/one_z_one_widget.dart';
 import '../constants/active_constants.dart';
 
 class FeaturedFull extends StatefulWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:optimize/constants/active_constants.dart';
-import 'package:optimize/home.dart';
 import 'package:optimize/providers/auth_provider.dart';
 import 'package:optimize/widgets/message_dialog.dart';
 import 'package:provider/provider.dart';
@@ -15,8 +14,8 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   bool _passwordVisible = false;
   bool _actionLoading = false;
-  Map<String, String> _authData = {'email': '', 'password': ''};
-  Map<String, String> _initValues = {'email': '', 'password': ''};
+  final Map<String, String> _authData = {'email': '', 'password': ''};
+  final Map<String, String> _initValues = {'email': '', 'password': ''};
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   Future<void> _submit() async {
@@ -52,34 +51,34 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black,
-        body: Container(
+        body: SizedBox(
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Sign In",
                 style: TextStyle(color: Colors.white, fontSize: 35),
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Form(
                   key: _formKey,
                   child: Container(
                     child: Column(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(
+                            const   Text(
                                 "Email",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 16),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               TextFormField(
                                 initialValue: _initValues['email'],
                                 validator: (value) {
@@ -89,7 +88,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   return null;
                                 },
                                 onSaved: (value) => _authData['email'] = value!,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   filled: true,
                                   fillColor: Colors.white,
                                   hintText: 'Type your email',
@@ -102,16 +101,16 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                         Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                            margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text(
+                                  const Text(
                                     "Password",
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 16),
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   TextFormField(
                                     keyboardType: TextInputType.text,
                                     onSaved: (value) =>
@@ -122,14 +121,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                       filled: true,
                                       fillColor: Colors.white,
 
-                                      hintStyle: TextStyle(
+                                      hintStyle: const TextStyle(
                                         color: Colors.white,
                                       ),
-                                      contentPadding: EdgeInsets.fromLTRB(
+                                      contentPadding: const EdgeInsets.fromLTRB(
                                           20.0, 15.0, 20.0, 15.0),
 
                                       border: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                               color: Colors.orange,
                                               width: 32.0),
                                           borderRadius:
@@ -155,23 +154,23 @@ class _SignInScreenState extends State<SignInScreen> {
                                     ),
                                   ),
                                 ])),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         FlatButton(
                           child: Text(
                             _actionLoading ? 'Loading..' : 'Let\'s gooo!',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold),
                           ),
                           color: activeColors.primary,
                           onPressed: _submit,
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 60, vertical: 15),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                       ],

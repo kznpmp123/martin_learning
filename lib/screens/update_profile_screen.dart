@@ -18,10 +18,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   bool _isPreloading = false;
   bool _passwordVisible = false;
   bool _actionLoading = false;
-  Map<String, String> _authData = {
+  final Map<String, String> _authData = {
     'name': '',
   };
-  Map<String, String> _initValues = {
+  final Map<String, String> _initValues = {
     'name': '',
   };
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -38,6 +38,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
@@ -49,7 +50,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   bool isValidEmail(String email) {
     String p =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regExp = new RegExp(p);
+    RegExp regExp = RegExp(p);
     return regExp.hasMatch(email);
   }
 
@@ -94,7 +95,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: activeColors.primary,
-        title: Text("   Update Profile"),
+        title: const Text("   Update Profile"),
         centerTitle: false,
         titleSpacing: 0.0,
         titleTextStyle: const TextStyle(
@@ -106,14 +107,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           ? FullScreenPreloader()
           : Consumer<Auth>(builder: (context, authState, child) {
               return Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                   child: Form(
                       key: _formKey,
                       child: Container(
                         child: Column(
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                              margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
@@ -128,7 +129,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                     },
                                     onSaved: (value) =>
                                         _authData['name'] = value!,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       filled: true,
                                       fillColor: Colors.white,
                                       hintText: 'Type Your First Name',
@@ -140,23 +141,23 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                             FlatButton(
                               child: Text(
                                 _actionLoading ? 'Loading...' : 'Update',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
                               color: activeColors.primary,
                               onPressed: _submit,
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 60, vertical: 15),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                           ],

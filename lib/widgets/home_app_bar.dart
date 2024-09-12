@@ -6,7 +6,6 @@ import 'package:optimize/providers/sort_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../constants/active_constants.dart';
-import '../screens/search.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({
@@ -49,8 +48,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               currentIndex == 0 || currentIndex == 4
                   ? const Text('')
                   : Row(
-                      children: [
-                        const Padding(
+                      children: const [
+                        Padding(
                           padding: EdgeInsets.only(right: 10.0),
                           child: SizedBox(
                             height: 25.0,
@@ -88,7 +87,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               const SizedBox(width: 5.0),
               const SizedBox(width: 5.0),
               currentIndex == 0 || currentIndex == 4 || currentIndex == 5
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Consumer<SortProvider>(
                       builder: (context, sortState, child) {
                       return GestureDetector(

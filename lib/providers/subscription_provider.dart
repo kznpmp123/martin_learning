@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:optimize/models/Noti.dart';
 import 'package:optimize/network/api_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,7 +15,7 @@ class SubscriptionProvider with ChangeNotifier {
     Response response;
     if (type == "pn") {
       response = await ApiService.getApiHandler(storedData['token'])
-          .get('pn-descriptions/${id}');
+          .get('pn-descriptions/$id');
       if (response.data["data"].length > 0) {
         description = response.data["data"][0]["description"];
       } else {
@@ -24,7 +23,7 @@ class SubscriptionProvider with ChangeNotifier {
       }
     } else if (type == "101") {
       response = await ApiService.getApiHandler(storedData['token'])
-          .get('one-zero-one-descriptions/${id}');
+          .get('one-zero-one-descriptions/$id');
       if (response.data["data"].length > 0) {
         description = response.data["data"][0]["description"];
       } else {

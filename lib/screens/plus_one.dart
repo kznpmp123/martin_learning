@@ -31,6 +31,7 @@ class _PlusOneState extends State<PlusOne> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();

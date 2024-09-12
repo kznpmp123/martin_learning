@@ -21,7 +21,7 @@ class ThreeMinutesService {
     final storedData = json.decode(token!);
 
     Response response = await ApiService.getApiHandler(storedData['token'])
-        .get('three-minutes/${id}');
+        .get('three-minutes/$id');
     return response.data;
   }
 
@@ -41,7 +41,7 @@ class ThreeMinutesService {
     final storedData = json.decode(token!);
 
     Response response = await ApiService.getApiHandler(storedData['token'])
-        .post('mark-three-minutes/${id}', data: {type: value});
+        .post('mark-three-minutes/$id', data: {type: value});
     return response.data;
   }
 

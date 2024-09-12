@@ -25,27 +25,13 @@ class PnProvider with ChangeNotifier {
       Pn data = Pn(
           id: response["data"][i]["id"],
           title: response["data"][i]["title"],
-          authorName: response["data"][i]["author_name"] != null
-              ? response["data"][i]["author_name"]
-              : "",
-          subtitle: response["data"][i]["subtitle"] != null
-              ? response["data"][i]["subtitle"]
-              : "",
-          description: response["data"][i]["description"] != null
-              ? response["data"][i]["description"]
-              : "",
-          coverImage: response["data"][i]["cover_image"] != null
-              ? response["data"][i]["cover_image"]
-              : "",
-          introVideo: response["data"][i]["intro_video"] != null
-              ? response["data"][i]["intro_video"]
-              : "",
-          introThumbnail: response["data"][i]["intro_video_thumbnail"] != null
-              ? response["data"][i]["intro_video_thumbnail"]
-              : "",
-          introDescription: response["data"][i]["intro_description"] != null
-              ? response["data"][i]["intro_description"]
-              : "",
+          authorName: response["data"][i]["author_name"] ?? "",
+          subtitle: response["data"][i]["subtitle"] ?? "",
+          description: response["data"][i]["description"] ?? "",
+          coverImage: response["data"][i]["cover_image"] ?? "",
+          introVideo: response["data"][i]["intro_video"] ?? "",
+          introThumbnail: response["data"][i]["intro_video_thumbnail"] ?? "",
+          introDescription: response["data"][i]["intro_description"] ?? "",
           isBooked: response["data"][i]["isBooked"],
           isLiked: response["data"][i]["isLiked"],
           isTipped: response["data"][i]["isTiped"],
@@ -58,7 +44,7 @@ class PnProvider with ChangeNotifier {
     }
 
     if (sorted) {
-      items = new List.from(items.reversed);
+      items = List.from(items.reversed);
     }
     notifyListeners();
   }
@@ -78,12 +64,8 @@ class PnProvider with ChangeNotifier {
     for (var y = 0; y < response["data"]["audios"].length; y++) {
       audioFiles.add(AudioFile(
           id: response["data"]["audios"][y]["id"],
-          name: response["data"]["audios"][y]["title"] != null
-              ? response["data"]["audios"][y]["title"]
-              : "",
-          thumbnail: response["data"]["audios"][y]["thumbnail"] != null
-              ? response["data"]["audios"][y]["thumbnail"]
-              : "",
+          name: response["data"]["audios"][y]["title"] ?? "",
+          thumbnail: response["data"]["audios"][y]["thumbnail"] ?? "",
           url: response["data"]["audios"][y]["audio"]));
     }
 
@@ -92,9 +74,7 @@ class PnProvider with ChangeNotifier {
           id: response["data"]["videos"][y]["id"],
           isYouTube: response["data"]["videos"][y]["is_youtube"],
           name: response["data"]["videos"][y]["title"],
-          subTitle: response["data"]["videos"][y]["subtitle"] != null
-              ? response["data"]["videos"][y]["subtitle"]
-              : "",
+          subTitle: response["data"]["videos"][y]["subtitle"] ?? "",
           thumbnail: response["data"]["videos"][y]["thumbnail"],
           url: response["data"]["videos"][y]["video"]));
     }
@@ -109,41 +89,25 @@ class PnProvider with ChangeNotifier {
     item = Pn(
         id: response["data"]["id"],
         title:
-            response["data"]["title"] != null ? response["data"]["title"] : "",
-        authorName: response["data"]["author_name"] != null
-            ? response["data"]["author_name"]
-            : "",
-        subtitle: response["data"]["subtitle"] != null
-            ? response["data"]["subtitle"]
-            : "",
-        description: response["data"]["description"] != null
-            ? response["data"]["description"]
-            : "",
-        coverImage: response["data"]["cover_image"] != null
-            ? response["data"]["cover_image"]
-            : "",
-        introVideo: response["data"]["intro_video"] != null
-            ? response["data"]["intro_video"]
-            : "",
-        introThumbnail: response["data"]["intro_video_thumbnail"] != null
-            ? response["data"]["intro_video_thumbnail"]
-            : "",
-        introDescription: response["data"]["intro_description"] != null
-            ? response["data"]["intro_description"]
-            : "",
+            response["data"]["title"] ?? "",
+        authorName: response["data"]["author_name"] ?? "",
+        subtitle: response["data"]["subtitle"] ?? "",
+        description: response["data"]["description"] ?? "",
+        coverImage: response["data"]["cover_image"] ?? "",
+        introVideo: response["data"]["intro_video"] ?? "",
+        introThumbnail: response["data"]["intro_video_thumbnail"] ?? "",
+        introDescription: response["data"]["intro_description"] ?? "",
         isBooked: response["data"]["isBooked"],
         isLiked: response["data"]["isLiked"],
         isTipped: response["data"]["isTiped"],
-        isSub: response["data"]["isSubscribed"] != null
-            ? response["data"]["isSubscribed"]
-            : false,
+        isSub: response["data"]["isSubscribed"] ?? false,
         pdfFiles: pdfFiles,
         audioFiles: audioFiles,
         videoFiles: videoFiles,
         categories: categories);
 
     // for detail screen when it reached from my list
-    if (items.length == 0) {
+    if (items.isEmpty) {
       items.add(item);
     }
 
