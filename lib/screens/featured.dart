@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:optimize/models/OneZOne.dart';
 import 'package:optimize/providers/feature_provider.dart';
 import 'package:optimize/providers/greeting_provider.dart';
 import 'package:optimize/widgets/full_screen_preloader.dart';
@@ -36,6 +34,7 @@ class _FeaturedState extends State<Featured> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();

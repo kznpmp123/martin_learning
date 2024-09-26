@@ -1,3 +1,4 @@
+import 'package:comment_box/comment/comment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:optimize/models/PlusOne.dart';
@@ -6,13 +7,12 @@ import 'package:optimize/screens/music_player_screen.dart';
 import 'package:optimize/screens/video_view_screen.dart';
 import 'package:optimize/widgets/full_screen_preloader.dart';
 
-import 'package:optimize/widgets/home_app_bar.dart';
 import 'package:provider/provider.dart';
 import '../constants/active_constants.dart';
 
 class PlusOneDetail extends StatefulWidget {
   final PlusOne data;
-  PlusOneDetail({
+  const PlusOneDetail({
     Key? key,
     required this.data,
   }) : super(key: key);
@@ -24,6 +24,34 @@ class PlusOneDetail extends StatefulWidget {
 class _PlusOneDetailState extends State<PlusOneDetail> {
   bool _isInit = false;
   bool _isPreloading = false;
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController commentController = TextEditingController();
+  List filedata = [
+    {
+      'name': 'Jisoo',
+      'pic':
+          'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqkvAbF41MS2VLRfIbsm6ogZUWla32EL2-RqRrNRRXnaYSbgz5lNas8lOOJANTp_yNA8JXW1W3N2YySTHuanO6EUudcRUxIRKZ1ZIpov7b-3MZXOfy2PHZ79Hww3wQZsrzS49SIlOVnh02WzduwaNRA3cYzyiLbjh9mdgyxwjWPXG3kfXVvzx_93MSTg/s16000/Jisoo.jpg',
+      'message': 'Nice'
+    },
+    {
+      'name': 'Lisa',
+      'pic':
+          'https://6.viki.io/image/755126efed4042a9900fdc8d788ff9a6/dummy.jpeg?s=900x600&e=t',
+      'message': 'Very cool'
+    },
+    {
+      'name': 'Jennie',
+      'pic':
+          'https://lh3.googleusercontent.com/kSue6Hy7y1joZRrGLZOhOZKUrQ1OvKFO74qhM5HHztyg71lDHK3K-631VrSiHbljuhBG7pJH90RS3MAPvrcODd90aYy4V93RTw=w960-rj-nu-e365',
+      'message': 'Very cool'
+    },
+    {
+      'name': 'Rosé',
+      'pic':
+          'https://blogger.googleusercontent.com/img/a/AVvXsEjbBFcf_WZs5zyor8cRzZDaKjnzsFq0RvPbAH_SUcCpcW2jqxRuY2WnpN1FtrlbHKeeOnnpnHgzPloI5fgLkmDhQeBQy_b9_T6UW3zR4oX5XfIA9VkXKMUXAU3NHOoZfZ1jU3BGe8yhpc_eK8R7jTeWcT9l05gEpGEj7HEovFtTTphH-8uCVXQGZxWT=s16000',
+      'message': 'Very cool'
+    },
+  ];
 
   void loadData() async {
     setState(() {
@@ -38,6 +66,7 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
@@ -65,12 +94,11 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                 ? FullScreenPreloader()
                 : Consumer<PlusOneProvider>(
                     builder: (context, appState, child) {
-                    return Container(
-                        child: Column(
+                    return Column(
                       children: [
                         GestureDetector(
                           onTap: () {
-                            if (appState.item.video.length > 0) {
+                            if (appState.item.video.isNotEmpty) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -113,12 +141,12 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                               ),
                               Text(
                                 appState.item.subtitle,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 13,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Row(
@@ -188,7 +216,7 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -205,7 +233,7 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                             child: ElevatedButton(
                               style: ButtonStyle(
                                 padding: MaterialStateProperty.all<EdgeInsets>(
-                                    EdgeInsets.symmetric(vertical: 5)),
+                                    const EdgeInsets.symmetric(vertical: 5)),
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
                                         Colors.white),
@@ -214,7 +242,7 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                                         Colors.blue),
                               ),
                               onPressed: () {
-                                if (appState.item.audio.length > 0) {
+                                if (appState.item.audio.isNotEmpty) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -229,8 +257,8 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                                 }
                               },
                               child: Column(
-                                children: [
-                                  const Icon(Icons.music_note),
+                                children: const [
+                                  Icon(Icons.music_note),
                                   Text(
                                     "Listen",
                                     style: TextStyle(fontSize: 10),
@@ -247,9 +275,76 @@ class _PlusOneDetailState extends State<PlusOneDetail> {
                           child: Html(
                             data: appState.item.description,
                           ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Form(
+                            key: formKey,
+                            child: Column(
+                              children: [
+                                TextFormField(
+                                  keyboardType: TextInputType.text,
+                                  controller: commentController,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    hintText: "Comment Here",
+                                    suffixIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.send_rounded),
+                                    ),
+                                  ),
+                          
+                                  // textInputAction: TextInputAction.next,
+                                  // validator: (val) {
+                                  //   if (val!.isEmpty) {
+                                  //     return "$validator is Required";
+                                  //   } else {
+                                  //     return null;
+                                  //   }
+                                  // },
+                                ),
+                                ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: filedata.length,
+                                    itemBuilder: (context, index) {
+                                      return ListTile(
+                                        leading: GestureDetector(
+                                          onTap: () async {
+                                            // Display the image in large form.
+                                            print("Comment Clicked");
+                                          },
+                                          child: Container(
+                                            height: 50.0,
+                                            width: 50.0,
+                                            decoration: const BoxDecoration(
+                                                color: Colors.blue,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(50))),
+                                            child: CircleAvatar(
+                                                radius: 50,
+                                                backgroundImage: NetworkImage(
+                                                    filedata[index]['pic'])),
+                                          ),
+                                        ),
+                                        title: Text(
+                                          filedata[index]['name'],
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        subtitle:
+                                            Text(filedata[index]['message']),
+                                      );
+                                    })
+                              ],
+                            ),
+                          ),
                         )
                       ],
-                    ));
+                    );
                   })));
   }
 }

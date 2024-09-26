@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:optimize/models/PlusOne.dart';
 import 'package:optimize/models/ThreeMintues.dart';
-import 'package:optimize/network/plus_one_service.dart';
 import 'package:optimize/network/three_minutes_service.dart';
 
 class ThreeMinutesProvider with ChangeNotifier {
@@ -18,19 +16,11 @@ class ThreeMinutesProvider with ChangeNotifier {
         title: response["data"][i]["title"],
         code: response["data"][i]["code"],
         subtitle: response["data"][i]["subtitle"],
-        description: response["data"][i]["description"] != null
-            ? response["data"][i]["description"]
-            : "",
-        audio: response["data"][i]["audio"] != null
-            ? response["data"][i]["audio"]
-            : "",
-        video: response["data"][i]["video"] != null
-            ? response["data"][i]["video"]
-            : "",
+        description: response["data"][i]["description"] ?? "",
+        audio: response["data"][i]["audio"] ?? "",
+        video: response["data"][i]["video"] ?? "",
         isUtube: response["data"][i]["isYoutube"],
-        thumbnail: response["data"][i]["thumbnail"] != null
-            ? response["data"][i]["thumbnail"]
-            : "",
+        thumbnail: response["data"][i]["thumbnail"] ?? "",
         isBooked: response["data"][i]["isBooked"],
         isLiked: response["data"][i]["isLiked"],
         isTipped: response["data"][i]["isTiped"],
@@ -40,7 +30,7 @@ class ThreeMinutesProvider with ChangeNotifier {
 
     if (sorted) {
       print("hi");
-      items = new List.from(items.reversed);
+      items = List.from(items.reversed);
     }
 
     notifyListeners();
@@ -53,22 +43,18 @@ class ThreeMinutesProvider with ChangeNotifier {
       title: response["data"]["title"],
       code: response["data"]["code"],
       subtitle: response["data"]["subtitle"],
-      description: response["data"]["description"] != null
-          ? response["data"]["description"]
-          : "",
-      audio: response["data"]["audio"] != null ? response["data"]["audio"] : "",
-      video: response["data"]["video"] != null ? response["data"]["video"] : "",
+      description: response["data"]["description"] ?? "",
+      audio: response["data"]["audio"] ?? "",
+      video: response["data"]["video"] ?? "",
       isUtube: response["data"]["isYoutube"],
-      thumbnail: response["data"]["thumbnail"] != null
-          ? response["data"]["thumbnail"]
-          : "",
+      thumbnail: response["data"]["thumbnail"] ?? "",
       isBooked: response["data"]["isBooked"],
       isLiked: response["data"]["isLiked"],
       isTipped: response["data"]["isTiped"],
     );
 
     // for detail screen when it reached from my list
-    if (items.length == 0) {
+    if (items.isEmpty) {
       items.add(item);
     }
     notifyListeners();

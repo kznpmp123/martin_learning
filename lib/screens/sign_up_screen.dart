@@ -21,13 +21,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   FlutterLocalNotificationsPlugin? fltNotification;
   bool _passwordVisible = false;
   bool _actionLoading = false;
-  Map<String, String> _authData = {
+  final Map<String, String> _authData = {
     'name': '',
     'email': '',
     'password': '',
     'password_confirmation': ''
   };
-  Map<String, String> _initValues = {
+  final Map<String, String> _initValues = {
     'name': '',
     'email': '',
     'password': '',
@@ -39,7 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     String p =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
-    RegExp regExp = new RegExp(p);
+    RegExp regExp = RegExp(p);
 
     return regExp.hasMatch(email);
   }
@@ -94,9 +94,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void initMessaging() async {
     // NotificationController? notificationController = Get.lazyPut();
 
-    var androiInit = AndroidInitializationSettings('@mipmap/ic_launcher');
+    var androiInit = const AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    var iosInit = IOSInitializationSettings(requestAlertPermission: true,requestBadgePermission: true,requestSoundPermission: true,);
+    var iosInit = const IOSInitializationSettings(requestAlertPermission: true,requestBadgePermission: true,requestSoundPermission: true,);
 
     var initSetting = InitializationSettings(android: androiInit, iOS: iosInit);
 
@@ -107,9 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     //register topic
     messaging.subscribeToTopic("all");
 
-    if (messaging != null) {
-      print('vvvvvvv');
-    }
+    print('vvvvvvv');
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       showNotification(message);
@@ -135,11 +133,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     // final InitializationSettings initializationSettings = InitializationSettings(
     //     android: initializationSettingsAndroid,);
 
-    var androidDetails = AndroidNotificationDetails('1', message.notification!.title ?? '',icon: '@mipmap/ic_launcher',color:  Color(0xFF0f90f3),);
+    var androidDetails = AndroidNotificationDetails('1', message.notification!.title ?? '',icon: '@mipmap/ic_launcher',color:  const Color(0xFF0f90f3),);
 
     // await fltNotification!.initialize(initializationSettings,
     //     onSelectNotification: selectNotification );
-    var iosDetails = IOSNotificationDetails();
+    var iosDetails = const IOSNotificationDetails();
 
     var generalNotificationDetails = NotificationDetails(android: androidDetails, iOS: iosDetails);
 
@@ -176,33 +174,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.black,
-        body: Container(
+        body: SizedBox(
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Welcome !",
                 style: TextStyle(color: Colors.white, fontSize: 32),
               ),
-              Text(
+              const Text(
                 "Let's Create",
                 style: TextStyle(color: Colors.white, fontSize: 32),
               ),
-              Text(
+              const Text(
                 "Your Account",
                 style: TextStyle(color: Colors.white, fontSize: 32),
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Form(
                   key: _formKey,
                   child: Container(
                     child: Column(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -215,7 +213,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   return null;
                                 },
                                 onSaved: (value) => _authData['name'] = value!,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   filled: true,
                                   fillColor: Colors.white,
                                   hintText: 'Type Your Name',
@@ -228,7 +226,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -243,7 +241,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   return null;
                                 },
                                 onSaved: (value) => _authData['email'] = value!,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   filled: true,
                                   fillColor: Colors.white,
                                   hintText: 'Type Your Email',
@@ -256,7 +254,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                            margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
@@ -276,14 +274,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       filled: true,
                                       fillColor: Colors.white,
                                       hintText: 'Type Your Password',
-                                      hintStyle: TextStyle(
+                                      hintStyle: const TextStyle(
                                         color: Colors.black,
                                       ),
-                                      contentPadding: EdgeInsets.fromLTRB(
+                                      contentPadding: const EdgeInsets.fromLTRB(
                                           20.0, 15.0, 20.0, 15.0),
 
                                       border: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                               color: Colors.orange,
                                               width: 32.0),
                                           borderRadius:
@@ -310,7 +308,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                 ])),
                         Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                            margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
@@ -331,14 +329,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       filled: true,
                                       fillColor: Colors.white,
                                       hintText: 'Type Your Confirm Password',
-                                      hintStyle: TextStyle(
+                                      hintStyle: const TextStyle(
                                         color: Colors.black,
                                       ),
-                                      contentPadding: EdgeInsets.fromLTRB(
+                                      contentPadding: const EdgeInsets.fromLTRB(
                                           20.0, 15.0, 20.0, 15.0),
 
                                       border: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                               color: Colors.orange,
                                               width: 32.0),
                                           borderRadius:
@@ -364,23 +362,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                 ])),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         FlatButton(
                           child: Text(
                             _actionLoading ? 'Loading...' : 'Create Account',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold),
                           ),
                           color: activeColors.primary,
                           onPressed: _submit,
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 60, vertical: 15),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         InkWell(
@@ -388,10 +386,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignInScreen()),
+                                  builder: (context) => const SignInScreen()),
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             "Already a member? Sign In",
                             style: TextStyle(
                                 color: Colors.white,

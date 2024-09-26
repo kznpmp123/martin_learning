@@ -21,20 +21,12 @@ class FeatureProvider with ChangeNotifier {
       OneZOne data = OneZOne(
         id: response["data"][i]["id"],
         title: response["data"][i]["title"],
-        video: response["data"][i]["video"] != null
-            ? response["data"][i]["video"]
-            : "",
+        video: response["data"][i]["video"] ?? "",
         isUtube: response["data"][i]["isYoutube"],
         subtitle: response["data"][i]["subtitle"],
-        description: response["data"][i]["description"] != null
-            ? response["data"][i]["description"]
-            : "",
-        thumbnail: response["data"][i]["thumbnail"] != null
-            ? response["data"][i]["thumbnail"]
-            : "",
-        poster_image: response["data"][i]["poster_image"] != null
-            ? response["data"][i]["poster_image"]
-            : "",
+        description: response["data"][i]["description"] ?? "",
+        thumbnail: response["data"][i]["thumbnail"] ?? "",
+        poster_image: response["data"][i]["poster_image"] ?? "",
         isBooked: response["data"][i]["isBooked"],
         isLiked: response["data"][i]["isLiked"],
         isTipped: response["data"][i]["isTiped"],
@@ -55,17 +47,11 @@ class FeatureProvider with ChangeNotifier {
         title: response["data"][i]["title"],
         code: response["data"][i]["code"],
         subtitle: response["data"][i]["subtitle"],
-        description: response["data"][i]["description"] != null
-            ? response["data"][i]["description"]
-            : "",
+        description: response["data"][i]["description"] ?? "",
         audio: "abc.mp3",
-        video: response["data"][i]["video"] != null
-            ? response["data"][i]["video"]
-            : "",
+        video: response["data"][i]["video"] ?? "",
         isUtube: response["data"][i]["isYoutube"],
-        thumbnail: response["data"][i]["thumbnail"] != null
-            ? response["data"][i]["thumbnail"]
-            : "",
+        thumbnail: response["data"][i]["thumbnail"] ?? "",
         isBooked: response["data"][i]["isBooked"],
         isLiked: response["data"][i]["isLiked"],
         isTipped: response["data"][i]["isTiped"],
@@ -85,25 +71,13 @@ class FeatureProvider with ChangeNotifier {
       Pn data = Pn(
           id: response["data"][i]["id"],
           title: response["data"][i]["title"],
-          authorName: response["data"][i]["author_name"] != null
-              ? response["data"][i]["author_name"]
-              : "",
-          subtitle: response["data"][i]["subtitle"] != null
-              ? response["data"][i]["subtitle"]
-              : "",
-          description: response["data"][i]["description"] != null
-              ? response["data"][i]["description"]
-              : "",
+          authorName: response["data"][i]["author_name"] ?? "",
+          subtitle: response["data"][i]["subtitle"] ?? "",
+          description: response["data"][i]["description"] ?? "",
           coverImage: response["data"][i]["cover_image"],
-          introVideo: response["data"][i]["intro_video"] != null
-              ? response["data"][i]["intro_video"]
-              : "",
-          introThumbnail: response["data"][i]["intro_video_thumbnail"] != null
-              ? response["data"][i]["intro_video_thumbnail"]
-              : "",
-          introDescription: response["data"][i]["intro_description"] != null
-              ? response["data"][i]["intro_description"]
-              : "",
+          introVideo: response["data"][i]["intro_video"] ?? "",
+          introThumbnail: response["data"][i]["intro_video_thumbnail"] ?? "",
+          introDescription: response["data"][i]["intro_description"] ?? "",
           isBooked: response["data"][i]["isBooked"],
           isLiked: response["data"][i]["isLiked"],
           isTipped: response["data"][i]["isTiped"],

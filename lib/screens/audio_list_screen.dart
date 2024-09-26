@@ -22,7 +22,7 @@ class AudioListScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: activeColors.primary,
-          title: Text("${type}: Audio Files"),
+          title: Text("$type: Audio Files"),
           centerTitle: false,
           titleSpacing: 0.0,
           titleTextStyle: const TextStyle(
@@ -52,8 +52,8 @@ class AudioListScreen extends StatelessWidget {
               child: Card(
                 child: ListTile(
                     title: Text(files[index].name),
-                    leading: Icon(Icons.music_note),
-                    trailing: Icon(Icons.arrow_forward)),
+                    leading: const Icon(Icons.music_note),
+                    trailing: const Icon(Icons.arrow_forward)),
               ),
             );
           },

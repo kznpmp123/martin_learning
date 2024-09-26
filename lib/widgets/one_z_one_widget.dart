@@ -8,7 +8,7 @@ import '../constants/active_constants.dart';
 class OneZOneWidget extends StatelessWidget {
   final OneZOne data;
   final double marginBottom;
-  OneZOneWidget({Key? key, required this.data, this.marginBottom = 0})
+  const OneZOneWidget({Key? key, required this.data, this.marginBottom = 0})
       : super(key: key);
 
   @override

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:optimize/constants/active_constants.dart';
-import 'package:optimize/providers/subscription_provider.dart';
-import 'package:provider/provider.dart';
-import 'full_screen_preloader.dart';
 
 class PremiumMessage extends StatefulWidget {
   final Function onClick;
@@ -23,10 +19,10 @@ class _PremiumMessageState extends State<PremiumMessage> {
     return Scaffold(
       body: Center(
           child: Container(
-        padding: EdgeInsets.only(top: 100),
+        padding: const EdgeInsets.only(top: 100),
         child: Column(
           children: [
-            Text(
+            const Text(
               "You need to subscribe",
               style: TextStyle(fontSize: 22),
             ),

@@ -12,10 +12,10 @@ class Auth with ChangeNotifier {
   late User currentUser;
 
   String get token {
-    if (this._token == "") {
+    if (_token == "") {
       tryAutoLogin();
     }
-    return this._token;
+    return _token;
   }
 
   Future<bool> tryAutoLogin() async {
@@ -33,7 +33,7 @@ class Auth with ChangeNotifier {
   }
 
   bool get isAuth {
-    if (_token != null && _token.length > 0) {
+    if (_token.isNotEmpty) {
       return true;
     } else {
       return false;
@@ -86,7 +86,7 @@ class Auth with ChangeNotifier {
   Future<void> getUserSubscription() async {
     var response = await AuthService.getUserSubscription();
     for (int i = 0; i < response["data"].length; i++) {
-      if(response["data"]["i"]["subscription"] != null){
+      if(response["data"][i]["subscription"] != null){
         subscribedCourses.add(SubscribedCourse(
           id: response["data"][i]["subscription"]["id"],
           name: response["data"][i]["subscription"]["title"],

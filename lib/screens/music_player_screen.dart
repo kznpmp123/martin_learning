@@ -24,13 +24,13 @@ class MusicPlayerScreen extends StatefulWidget {
 class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
   AudioPlayer audioPlayer = AudioPlayer();
   late Duration duration = const Duration(milliseconds: 0);
-  late PlayerState playerState = PlayerState.PAUSED;
-  late Duration maxDuration = Duration();
+  late PlayerState playerState = PlayerState.paused;
+  late Duration maxDuration = const Duration();
   bool _isPreloading = false;
 
   @override
   void initState() {
-    audioPlayer.setUrl(widget.link);
+    audioPlayer.setSourceUrl(widget.link);
 
     audioPlayer.onPlayerStateChanged.listen((PlayerState s) {
       setState(() {
@@ -47,7 +47,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
         _isPreloading = false;
       });
     });
-    audioPlayer.onAudioPositionChanged.listen((Duration p) {
+    audioPlayer.onPositionChanged.listen((Duration p) {
       if (p.inMilliseconds > 0) {
         setState(() {
           duration = p;
@@ -71,7 +71,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
           appBar: AppBar(
             backgroundColor: activeColors.primary,
             title: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Text("Listen :" + widget.title),
             ),
             centerTitle: false,
@@ -87,11 +87,11 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                   child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
+                      padding: const EdgeInsets.fromLTRB(0, 30, 0, 10),
                       alignment: Alignment.center,
                       child: Image.network(
                         widget.cover,
-                        width: screenWidth ,
+                        width: screenWidth,
                         height: 200,
                         fit: BoxFit.cover,
                       ),
@@ -104,7 +104,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                         )),
                     Text(
                       widget.subTitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 13,
                       ),
                       textAlign: TextAlign.center,
@@ -141,27 +141,21 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                             },
                             icon: const Icon(
                                 Icons.settings_backup_restore_rounded)),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
-                        playerState == PlayerState.PLAYING
+                        playerState == PlayerState.playing
                             ? IconButton(
                                 onPressed: () async {
-                                  int result = await audioPlayer.pause();
-                                  if (result == 1) {
-                                    print("Pausing..");
-                                  }
+                                  await audioPlayer.pause();
                                 },
                                 icon: const Icon(Icons.pause_circle))
                             : IconButton(
                                 onPressed: () async {
-                                  int result = await audioPlayer.resume();
-                                  if (result == 1) {
-                                    print("Playing..");
-                                  }
+                                  await audioPlayer.resume();
                                 },
                                 icon: const Icon(Icons.play_arrow)),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         RotatedBox(

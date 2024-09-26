@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:optimize/models/PlusOne.dart';
-import 'package:optimize/providers/plus_one_provider.dart';
 import 'package:optimize/providers/sort_provider.dart';
 import 'package:optimize/providers/three_minutes_provider.dart';
 import 'package:optimize/widgets/full_screen_preloader.dart';
@@ -8,7 +6,6 @@ import 'package:optimize/widgets/three_minutes_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../constants/active_constants.dart';
-import '../widgets/plus_one_widget.dart';
 
 class ThreeMinture extends StatefulWidget {
   const ThreeMinture({Key? key}) : super(key: key);
@@ -34,6 +31,7 @@ class _ThreeMintureState extends State<ThreeMinture> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();

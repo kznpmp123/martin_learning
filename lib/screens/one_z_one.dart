@@ -30,6 +30,7 @@ class _OneZeroOneState extends State<OneZeroOne> {
     });
   }
 
+  @override
   void didChangeDependencies() {
     if (!_isInit) {
       loadData();
